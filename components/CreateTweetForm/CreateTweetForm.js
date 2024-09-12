@@ -26,7 +26,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
 
       const tweet = await databases.createDocument(
         process.env.NEXT_PUBLIC_DATABASE,
-        process.env.NEXT_PUBLIC_TWEETS_COLLECTION,
+        process.env.NEXT_PUBLIC_POSTS_COLLECTION,
         ID.unique(),
         {
           useremail: currentAccount.email,
@@ -65,7 +65,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
             <div className="flex-1 text-center px-1 py-1 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-red-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-800 hover:text-red-300"
+                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -84,7 +84,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-red-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-800 hover:text-red-300"
+                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -104,7 +104,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-red-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-800 hover:text-red-300"
+                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -123,7 +123,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-red-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-800 hover:text-red-300"
+                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -144,9 +144,9 @@ export default function CreateTweetForm({ onTweetCreated }) {
         <div className="flex-1">
           <button
             type="submit"
-            className="bg-red-400 mt-5 hover:bg-red-600 text-white font-bold py-2 px-8 rounded-full mr-8 float-right"
+            className="bg-blue-400 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-8 rounded-full mr-8 float-right"
           >
-            Post
+            Tweet
           </button>
         </div>
       </div>

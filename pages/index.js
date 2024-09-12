@@ -6,10 +6,10 @@ import appwriteClient from '@/libs/appwrite';
 import Feed from '@/components/Feed';
 import MainLayout from '@/components/Layouts/MainLayout';
 
-export default function Home({ tweets }) {
+export default function Home({ posts }) {
   return (
     <MainLayout>
-      <Feed tweets={tweets.documents} />
+      <Feed posts={posts.documents} />
     </MainLayout>
   );
 }
@@ -17,11 +17,11 @@ export default function Home({ tweets }) {
 export async function getServerSideProps() {
   const databases = new Databases(appwriteClient);
 
-  const tweets = await databases.listDocuments(
+  const posts = await databases.listDocuments(
     process.env.NEXT_PUBLIC_DATABASE,
-    process.env.NEXT_PUBLIC_TWEETS_COLLECTION
+    process.env.NEXT_PUBLIC_POSTS_COLLECTION
   );
   return {
-    props: { tweets }, // will be passed to the page component as props
+    props: { posts }, // will be passed to the page component as props
   };
 }

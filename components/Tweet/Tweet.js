@@ -14,7 +14,7 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
     try {
       await databases.deleteDocument(
         process.env.NEXT_PUBLIC_DATABASE,
-        process.env.NEXT_PUBLIC_TWEETS_COLLECTION,
+        process.env.NEXT_PUBLIC_POSTS_COLLECTION,
         tweet.$id
       );
       onTweetRemoved(tweet);
