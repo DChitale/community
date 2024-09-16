@@ -1,22 +1,22 @@
 import React from 'react';
 
-import Tweet from '@/components/Tweet';
-import CreateTweetForm from '@/components/CreateTweetForm';
+import Post from '@/components/Tweet';
+import CreatePostForm from '@/components/CreateTweetForm';
 
 export default function Feed({ posts: postsProp }) {
   const [posts, setPosts] = React.useState(postsProp);
 
-  const onTweetCreated = (newPost) => {
+  const onPostCreated = (newPost) => {
     setPosts((currPosts) => [newPost, ...currPosts]);
   };
 
-  const onTweetRemoved = (postToRemove) => {
+  const onPostRemoved = (postToRemove) => {
     setPosts((currPosts) =>
       currPosts.filter((post) => post.$id !== postToRemove.$id)
     );
   };
 
-  const onLikeTweetCallback = (newPost) => {
+  const onLikePostCallback = (newPost) => {
     setPosts((currPosts) =>
       currPosts.map((post) => {
         if (post.$id === newPost.$id) {
@@ -57,16 +57,16 @@ export default function Feed({ posts: postsProp }) {
 
       <hr className="border-gray-600" />
 
-      <CreateTweetForm onTweetCreated={onTweetCreated} />
+      <CreatePostForm onPostCreated={onPostCreated} />
 
       <hr className="border-gray-800 border-2" />
 
       <div></div>
 
       {postsSortedByCreatedDate?.map((post) => (
-        <Tweet
-          onLikeTweetCallback={onLikeTweetCallback}
-          onTweetRemoved={onTweetRemoved}
+        <Post
+          onLikePostCallback={onLikePostCallback}
+          onPostRemoved={onPostRemoved}
           key={post.$id}
           post={post}
         />

@@ -4,10 +4,10 @@ import { Databases, ID } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
 import useUser from '@/hooks/useUser';
 
-export default function CreateTweetForm({ onTweetCreated }) {
+export default function CreatePostForm({ onPostCreated }) {
   const { currentAccount } = useUser();
 
-  const [tweetForm, setTweetForm] = React.useState({
+  const [postForm, setPostForm] = React.useState({
     text: '',
   });
 
@@ -15,7 +15,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
     const {
       target: { name, value },
     } = event;
-    setTweetForm((currTweetForm) => ({ ...currTweetForm, [name]: value }));
+    setPostForm((currPostForm) => ({ ...currPostForm, [name]: value }));
   };
 
   const onSubmit = async (event) => {
@@ -24,18 +24,18 @@ export default function CreateTweetForm({ onTweetCreated }) {
     try {
       const databases = new Databases(appwriteClient);
 
-      const tweet = await databases.createDocument(
+      const post = await databases.createDocument(
         process.env.NEXT_PUBLIC_DATABASE,
         process.env.NEXT_PUBLIC_POSTS_COLLECTION,
         ID.unique(),
         {
           useremail: currentAccount.email,
           username: currentAccount.name,
-          text: tweetForm.text,
+          text: postForm.text,
         }
       );
-      setTweetForm({text: ''})
-      onTweetCreated(tweet);
+      setPostForm({text: ''})
+      onPostCreated(post);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +47,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
         <div className="flex-1 px-6 pt-2 mt-2">
           <textarea
             onChange={onChangeInput}
-            value={tweetForm.text}
+            value={postForm.text}
             name="text"
             className=" bg-transparent outline-none focus:ring-1 focus:ring-gray-800 rounded-lg p-3 text-white placholder:text-gray-400 font-medium text-lg w-full"
             rows="2"
@@ -146,7 +146,7 @@ export default function CreateTweetForm({ onTweetCreated }) {
             type="submit"
             className="bg-blue-400 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-8 rounded-full mr-8 float-right"
           >
-            Tweet
+            Post
           </button>
         </div>
       </div>
