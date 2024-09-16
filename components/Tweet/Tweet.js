@@ -5,36 +5,36 @@ import { Databases, Functions } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
 import Modal from '@/components/Modal';
 
-export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
+export default function Post({ post, onPostRemoved, onLikePostCallback }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const onRemoveTweet = async () => {
+  const onRemovePost = async () => {
     const databases = new Databases(appwriteClient);
 
     try {
       await databases.deleteDocument(
         process.env.NEXT_PUBLIC_DATABASE,
         process.env.NEXT_PUBLIC_POSTS_COLLECTION,
-        tweet.$id
+        post.$id
       );
-      onTweetRemoved(tweet);
+      onPostRemoved(post);
     } catch (error) {
       setIsModalOpen(true);
     }
   };
 
-  const onLikeTweet = async () => {
+  const onLikePost = async () => {
     try {
       const functions = new Functions(appwriteClient);
       await functions.createExecution(
         '63fbce83c76015587c3e',
         JSON.stringify({
-          tweetId: tweet.$id,
-          likes: (tweet.likes || 0) + 1,
+          postId: post.$id,
+          likes: (post.likes || 0) + 1,
         }),
         true
       );
-      onLikeTweetCallback({ ...tweet, likes: (tweet.likes || 0) + 1 });
+      onLikePostCallback({ ...post, likes: (post.likes || 0) + 1 });
     } catch (error) {
       console.log(error);
     }
@@ -42,11 +42,11 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
   return (
     <div className="p-8">
       <p className="font-medium leading-6 text-base text-white">
-        {tweet.username}{' '}
-        <span className="text-gray-500">@{tweet.useremail}</span>
+        {post.username}{' '}
+        <span className="text-gray-500">@{post.useremail}</span>
       </p>
       <p className="flex-shrink font-medium text-base text-white width-auto">
-        {tweet.text}
+        {post.text}
       </p>
 
       <div className="flex">
@@ -92,7 +92,7 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
 
             <div className="flex-1 m-2 py-2 text-center">
               <button
-                onClick={onLikeTweet}
+                onClick={onLikePost}
                 className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 group hover:bg-blue-800 hover:text-blue-300"
               >
                 <div>
@@ -108,7 +108,7 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
                     <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                   </svg>
                 </div>
-                <span className="ml-2">{tweet.likes}</span>
+                <span className="ml-2">{post.likes}</span>
               </button>
             </div>
 
@@ -150,7 +150,7 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
             </div>
             <div className="flex-1 m-2 py-2 text-center">
               <button
-                onClick={onRemoveTweet}
+                onClick={onRemovePost}
                 className="bg-transparent cursor-pointer flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 curs group hover:bg-red-100 hover:text-red-400"
               >
                 <svg
@@ -176,7 +176,7 @@ export default function Tweet({ tweet, onTweetRemoved, onLikeTweetCallback }) {
       <Modal
         isOpen={isModalOpen}
         title="Unauthorized access"
-        message="It seems that you are trying to remove a tweet, however you are not authorized to do so"
+        message="It seems that you are trying to remove a post, however you are not authorized to do so"
       />
     </div>
   );
