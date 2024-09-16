@@ -27,7 +27,7 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
     try {
       const functions = new Functions(appwriteClient);
       await functions.createExecution(
-        '63fbce83c76015587c3e',
+        '66e81fff002a733c7660',
         JSON.stringify({
           postId: post.$id,
           likes: (post.likes || 0) + 1,

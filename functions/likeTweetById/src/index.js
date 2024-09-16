@@ -17,7 +17,7 @@ module.exports = async function (req, res) {
   const client = new sdk.Client();
 
   const database = new sdk.Databases(client);
-  const { tweetId, likes } = JSON.parse(req.payload)
+  const { postId, likes } = JSON.parse(req.payload)
 
   if (
     !req.variables['APPWRITE_FUNCTION_ENDPOINT'] ||
@@ -32,11 +32,11 @@ module.exports = async function (req, res) {
       .setSelfSigned(true);
     
     let newTweet = {}
-    if (tweetId) {
+    if (postId) {
       try {
         newTweet = await database.updateDocument(
-          '63f6a34359d6650eea24',
-          '63f6a37f0591a0dd62b6',
+          '66e320860035088d27b7',
+          '66e3208e0035ff5f42ff',
           tweetId,
           { likes }
         );
