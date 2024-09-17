@@ -5,7 +5,7 @@ import { Databases, Functions } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
 import Modal from '@/components/Modal';
 
-export default function Post({ post, onPostRemoved, onLikePostCallback }) {
+export default function Post({ post, onPostRemoved, onLikePostCallback,userId  }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const onRemovePost = async () => {
@@ -30,15 +30,18 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
         '66e81fff002a733c7660',
         JSON.stringify({
           postId: post.$id,
-          likes: (post.likes || 0) + 1,
+          userId: userId ,
         }),
         true
       );
-      onLikePostCallback({ ...post, likes: (post.likes || 0) + 1 });
+      const updatedPost = JSON.parse(result.response);
+      onLikePostCallback(updatedPost.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const userHasLiked = post.likedUsers?.includes(userId);
   return (
     <div className="p-8">
       <p className="font-medium leading-6 text-base text-white">
