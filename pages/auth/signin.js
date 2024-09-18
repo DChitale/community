@@ -27,7 +27,7 @@ export default function Signin() {
     const promise = account.createEmailSession(email, password);
 
     try {
-      const userAccount = await promise;
+      // const userAccount = await promise;
 
       setSigninStatus(FETCH_STATUS.SUCCESS);
       router.push('/');

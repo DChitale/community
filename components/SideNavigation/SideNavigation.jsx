@@ -5,10 +5,10 @@ import { useState } from 'react';
 export default function SideNavigation() {
   const { currentAccount, logout } = useUser();
 
-  const { isOpen, setIsOpen} =useState(false);
-  const ToggleSide =() => {
-    isOpen ===true ? setIsOpen(false): setIsOpen(true);
-  }
+ const { isOpen, setIsOpen} =useState(false);
+  // const ToggleSide =() => {
+  //   isOpen ===true ? setIsOpen(false): setIsOpen(true);
+  // }
   return (
     <div className="w-1/5 text-black py-4 h-auto">
       <div className="px-4">

@@ -260,7 +260,7 @@ export default function Profile() {
                   className={classNames({ '!pl-12': countryFlag })}
                 />
                 {countryFlag && (
-                  <img
+                  <Image
                     src={countryFlag}
                     alt="country flag"
                     className="absolute right-0 w-8 bottom-1.5 left-3  border border-white rounded-full"
