@@ -154,6 +154,7 @@ export default function SignUp() {
                     }
                   )}
                 >
+
                   {signupStatus === FETCH_STATUS.LOADING && (
                     <svg
                       className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
@@ -180,7 +181,16 @@ export default function SignUp() {
                     ? 'Signing up...'
                     : 'Sign up'}
                 </button>
+                
               </div>
+              {/* add an element saying " Already have an account? Login" and attach a link to login page */}
+              <label
+                  htmlFor="Login"
+                  className="block text-sm font-medium text-white"
+                >
+                  Already have an Account?  
+                  <a href='/auth/signin' > Login</a>
+                </label>
             </form>
           </div>
         </div>

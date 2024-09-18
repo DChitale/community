@@ -112,8 +112,19 @@ export default function Signin() {
                 </div>
               </div>
 
-              <div className="flex justify-end">
-                <Link href="/auth/forgot-password" className="underline cursor-pointer text-blue-300" >Forgot password?</Link>
+              
+
+              <div className="flex justify-between">
+                
+              {/* add an element saying " Already have an account? Login" and attach a link to login page */}
+              <label
+                  htmlFor="Login"
+                  className="block text-sm font-medium text-white-400 "
+                >
+                  Don't have an Account?  
+                  <a className='underline text-blue-300' href='/auth/signin' > Login</a>
+                </label>
+                <Link href="/auth/forgot-password" className="underline cursor-pointer text-blue-300" > Forgot password?</Link>
               </div>
 
               {hasErrors && (
@@ -121,6 +132,7 @@ export default function Signin() {
                   <p>{form.error}</p>
                 </div>
               )}
+              
 
               <div>
                 <button
@@ -160,6 +172,7 @@ export default function Signin() {
                     : 'Sign in'}
                 </button>
               </div>
+              
             </form>
           </div>
         </div>
