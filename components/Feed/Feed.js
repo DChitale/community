@@ -35,12 +35,12 @@ export default function Feed({ posts: postsProp }) {
     <div className="w-1/2 border border-gray-600 h-auto  border-t-0">
       <div className="flex">
         <div className="flex-1 m-2">
-          <h2 className="px-4 py-2 text-xl font-semibold text-white">Home</h2>
+          <h2 className="px-4 py-2 text-xl font-semibold text-black">Home</h2>
         </div>
         <div className="flex-1 px-4 py-2 m-2">
           <a
             href=""
-            className=" text-2xl font-medium rounded-full text-white hover:bg-blue-800 hover:text-blue-300 float-right"
+            className=" text-2xl font-medium rounded-full text-rose-400 bg-rose-50 hover:bg-rose-100 hover:text-red-500 float-right"
           >
             <svg
               className="m-2 h-6 w-6"

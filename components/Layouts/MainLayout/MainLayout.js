@@ -19,21 +19,21 @@ export default function MainLayout({ children }) {
   if (!currentAccount) {
     // While there is no account show a spinner
     return (
-      <div className="bg-black w-full min-h-screen flex items-center justify-center">
+      <div className="bg-white w-full min-h-screen flex items-center justify-center">
         <Spinner />
       </div>
     );
   }
 
   return (
-    <div className="bg-black">
+    <div className="bg-white">  
       <div className="min-h-screen container mx-auto">
         <div className="flex justify-center">
           <SideNavigation />
 
           {children}
 
-          <div className=" w-1/4 p-5">
+          {/* <div className=" w-1/4 p-5">
             <div className="relative text-gray-300 pb-0 w-full">
               <button type="submit" className="absolute ml-4 mt-3 mr-4">
                 <svg
@@ -57,7 +57,7 @@ export default function MainLayout({ children }) {
                 className="h-10 px-10 pr-5 rounded-full text-sm focus:outline-none bg-gray-900 shadow w-full"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

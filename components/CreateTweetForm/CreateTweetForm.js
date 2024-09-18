@@ -49,7 +49,7 @@ export default function CreatePostForm({ onPostCreated }) {
             onChange={onChangeInput}
             value={postForm.text}
             name="text"
-            className=" bg-transparent outline-none focus:ring-1 focus:ring-gray-800 rounded-lg p-3 text-white placholder:text-gray-400 font-medium text-lg w-full"
+            className=" bg-red-50 outline-none focus:ring-1 focus:ring-rose-200 rounded-lg p-3 text-black placholder:text-gray-400 font-small text-lg w-full"
             rows="2"
             cols="50"
             placeholder="What's happening?"
@@ -61,11 +61,11 @@ export default function CreatePostForm({ onPostCreated }) {
         <div className="w-10"></div>
 
         <div className="w-64 px-2">
-          <div className="flex items-center">
+          {/* <div className="flex items-center bg-red-300">
             <div className="flex-1 text-center px-1 py-1 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
+                className="mt-1 group flex items-center text-rose-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-rose-800 hover:text-rose-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -84,7 +84,7 @@ export default function CreatePostForm({ onPostCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
+                className="mt-1 group flex items-center text-rose-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-rose-800 hover:text-rose-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -104,7 +104,7 @@ export default function CreatePostForm({ onPostCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
+                className="mt-1 group flex items-center text-rose-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-rose-800 hover:text-rose-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -123,7 +123,7 @@ export default function CreatePostForm({ onPostCreated }) {
             <div className="flex-1 text-center py-2 m-2">
               <a
                 href="#"
-                className="mt-1 group flex items-center text-blue-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300"
+                className="mt-1 group flex items-center text-rose-400 px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-rose-800 hover:text-rose-300"
               >
                 <svg
                   className="text-center h-7 w-6"
@@ -138,13 +138,13 @@ export default function CreatePostForm({ onPostCreated }) {
                 </svg>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <div className="flex-1">
+        <div className="flex-1 pb-3 ">
           <button
             type="submit"
-            className="bg-blue-400 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-8 rounded-full mr-8 float-right"
+            className="bg-gradient-to-r from-red-400 to-rose-700 mt-5 hover:bg-gradient-to-r from-red-500 to-rose-800 text-white font-bold py-2 px-8 rounded-full mr-8 float-right "
           >
             Post
           </button>
