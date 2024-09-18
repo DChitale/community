@@ -41,11 +41,11 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
   };
   return (
     <div className="p-8">
-      <p className="font-medium leading-6 text-base text-white">
+      <p className="font-medium leading-6 text-base text-black">
         {post.username}{' '}
         <span className="text-gray-500">@{post.useremail}</span>
       </p>
-      <p className="flex-shrink font-medium text-base text-white width-auto">
+      <p className="flex-shrink font-medium text-base text-black width-auto">
         {post.text}
       </p>
 
@@ -55,7 +55,7 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
             <div className="flex-1 text-center">
               <a
                 href="#"
-                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-blue-800 hover:text-blue-300"
+                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-rose-500 hover:text-rose-100"
               >
                 <svg
                   className="h-6 text-center w-6"
@@ -74,7 +74,7 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
             <div className="flex-1 m-2 py-2 text-center">
               <a
                 href="#"
-                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-blue-800 hover:text-blue-300"
+                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-rose-500 hover:text-rose-100"
               >
                 <svg
                   className="text-center w-6 h-7"
@@ -93,7 +93,7 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
             <div className="flex-1 m-2 py-2 text-center">
               <button
                 onClick={onLikePost}
-                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 group hover:bg-blue-800 hover:text-blue-300"
+                className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 group hover:bg-rose-500 hover:text-rose-100"
               >
                 <div>
                   <svg
@@ -112,7 +112,7 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
               </button>
             </div>
 
-            <div className="flex-1 m-2 py-2 text-center">
+            {/* <div className="flex-1 m-2 py-2 text-center">
               <a
                 href="#"
                 className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-blue-800 hover:text-blue-300"
@@ -129,8 +129,8 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
                   <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
                 </svg>
               </a>
-            </div>
-            <div className="flex-1 m-2 py-2 text-center">
+            </div> */}
+            {/* <div className="flex-1 m-2 py-2 text-center">
               <a
                 href="#"
                 className="flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 group hover:bg-blue-800 hover:text-blue-300"
@@ -147,11 +147,11 @@ export default function Post({ post, onPostRemoved, onLikePostCallback }) {
                   <path d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"></path>
                 </svg>
               </a>
-            </div>
+            </div> */}
             <div className="flex-1 m-2 py-2 text-center">
               <button
                 onClick={onRemovePost}
-                className="bg-transparent cursor-pointer flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 curs group hover:bg-red-100 hover:text-red-400"
+                className="bg-transparent cursor-pointer flex font-medium items-center leading-6 mt-1 px-3 py-2 rounded-full text-base text-gray-500 w-12 curs group hover:bg-rose-100 hover:text-rose-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
