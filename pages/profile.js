@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+
 
 import { Locale, Avatars } from 'appwrite';
 import { v4 as uuidv4 } from 'uuid';
@@ -130,25 +132,26 @@ export default function Profile() {
     await response.json();
   };
 
-  const getCountries = async () => {
-    const { countries } = await locale.listCountries();
-    setCountries(
-      countries.map((country) => ({ value: country, label: country.name }))
-    );
-  };
+  // const getCountries = async () => {
+  //   const { countries } = await locale.listCountries();
+  //   setCountries(
+  //     countries.map((country) => ({ value: country, label: country.name }))
+  //   );
+  // };
 
-  const getLanguages = async () => {
-    const { languages } = await locale.listLanguages();
+  // const getLanguages = async () => {
+  //   const { languages } = await locale.listLanguages();
 
-    setLanguages(
-      languages.map((language) => ({ value: language, label: language.name }))
-    );
-  };
+  //   setLanguages(
+  //     languages.map((language) => ({ value: language, label: language.name }))
+  //   );
+  // };
 
-  React.useEffect(() => {
-    getCountries();
-    getLanguages();
-  }, []);
+  // React.useEffect(() => {
+  //   getCountries();
+  //   getLanguages();
+  // }, [getCountries, getLanguages]);
+  
 
   return (
     <MainLayout>
@@ -240,7 +243,7 @@ export default function Profile() {
                 value={profileForm.website}
               />
             </div>
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <div className="mt-1 relative">
                 <Select
                   value={profileForm.country}
@@ -265,10 +268,10 @@ export default function Profile() {
                     alt="country flag"
                     className="absolute right-0 w-8 bottom-1.5 left-3  border border-white rounded-full"
                   />
-                )}
-              </div>
-            </div>
-            <div className="mt-4">
+                )} */}
+              {/* </div> */}
+            {/* </div> */}
+            {/* <div className="mt-4">
               <div className="mt-1">
                 <Select
                   value={profileForm.language}
@@ -281,8 +284,8 @@ export default function Profile() {
                   options={languages}
                   label="Language"
                 />
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
 
           {profileStatus === FETCH_STATUS.SUCCESS && (
