@@ -21,9 +21,9 @@ export default function Profile() {
   const [profileStatus, setProfileStatus] = React.useState(FETCH_STATUS.IDLE);
   const { currentAccount } = useUser();
   const [userAvatar, setUserAvatar] = React.useState('');
-  const [countryFlag, setCountryFlag] = React.useState('');
-  const [countries, setCountries] = React.useState([]);
-  const [languages, setLanguages] = React.useState([]);
+  // const [countryFlag, setCountryFlag] = React.useState('');
+  // const [countries, setCountries] = React.useState([]);
+  // const [languages, setLanguages] = React.useState([]);
   const [profileForm, setProfileForm] = React.useState({
     name: '',
     bio: '',

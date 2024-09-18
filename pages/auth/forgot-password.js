@@ -28,7 +28,8 @@ export default function ForgotPassword() {
     const account = new Account(appwriteClient);
     const promise = account.createRecovery(
       email,
-      'http://localhost:3000/auth/reset-password'
+      'https://community-eight.vercel.app/auth/reset-password'
+      
     );
 
     try {

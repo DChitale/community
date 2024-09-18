@@ -1,10 +1,10 @@
 {
-    "projectId": "63f69d80e2ed8deaaf37",
+    "projectId": "66e31fb1001673db0442",
     "projectName": "twitter-clone",
     "functions": [
         {
-            "$id": "63fbce83c76015587c3e",
-            "name": "likeTweetById",
+            "$id": "66e81fff002a733c7660",
+            "name": "likes",
             "runtime": "node-16.0",
             "path": "functions/likeTweetById",
             "entrypoint": "src/index.js",
