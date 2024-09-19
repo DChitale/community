@@ -197,7 +197,7 @@ export default function Profile() {
                 name="name"
                 id="name"
                 required
-                className="block w-full rounded-full border-gray-800 px-4 py-3 bg-gray-800 shadow-sm focus:ring-1 focus:ring-gray-600 outline-none sm:text-sm"
+                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
                 placeholder="Jane Smith"
                 onChange={onChangeInput}
                 value={profileForm.name}
@@ -217,7 +217,7 @@ export default function Profile() {
                 type="text"
                 name="bio"
                 id="bio"
-                className="block w-full rounded-xl border-gray-800 px-4 py-3 bg-gray-800 shadow-sm focus:ring-1 focus:ring-gray-600 outline-none sm:text-sm"
+                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
                 placeholder="Tell us something about yourself!"
                 onChange={onChangeInput}
                 value={profileForm.bio}
@@ -237,55 +237,13 @@ export default function Profile() {
                 type="text"
                 name="website"
                 id="website"
-                className="block w-full rounded-full border-gray-800 px-4 py-3 bg-gray-800 shadow-sm focus:ring-1 focus:ring-gray-600 outline-none sm:text-sm"
+                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
                 placeholder="e.g. https://www.johndoe.dev"
                 onChange={onChangeInput}
                 value={profileForm.website}
               />
             </div>
-            {/* <div className="mt-4">
-              <div className="mt-1 relative">
-                <Select
-                  value={profileForm.country}
-                  onChange={async (event) => {
-                    setProfileForm((currProfileForm) => ({
-                      ...currProfileForm,
-                      country: event.target.value,
-                    }));
-                    const countryCode = countries.find(
-                      (country) => country.value.name === event.target.value
-                    )?.value?.code;
-                    const result = await avatars.getFlag(countryCode);
-                    setCountryFlag(result?.href);
-                  }}
-                  options={countries}
-                  label="Countries"
-                  className={classNames({ '!pl-12': countryFlag })}
-                />
-                {countryFlag && (
-                  <Image
-                    src={countryFlag}
-                    alt="country flag"
-                    className="absolute right-0 w-8 bottom-1.5 left-3  border border-white rounded-full"
-                  />
-                )} */}
-              {/* </div> */}
-            {/* </div> */}
-            {/* <div className="mt-4">
-              <div className="mt-1">
-                <Select
-                  value={profileForm.language}
-                  onChange={(event) => {
-                    setProfileForm((currProfileForm) => ({
-                      ...currProfileForm,
-                      language: event.target.value,
-                    }));
-                  }}
-                  options={languages}
-                  label="Language"
-                />
-              </div> */}
-            {/* </div> */}
+           
           </div>
 
           {profileStatus === FETCH_STATUS.SUCCESS && (
@@ -294,7 +252,7 @@ export default function Profile() {
             </div>
           )}
 
-          <button className="py-2 px-4 rounded-full border-2 text-lg w-40 border-blue-400 text-blue-400 mt-10">
+          <button className="py-2 px-4 rounded-full border-2 text-lg w-40 border-black text-black mt-10">
             Save
           </button>
         </form>
