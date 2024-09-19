@@ -155,10 +155,10 @@ export default function Profile() {
 
   return (
     <MainLayout>
-      <div className="text-white px-10 py-20 w-1/2 border border-gray-600 h-auto  border-t-0">
-        <h1 className="text-xl">Edit Profile</h1>
+      <div className="text-black px-10 py-10 w-1/2 border border-gray-600 h-auto  border-t-0">
+        <h1 className="text-2xl">Edit Profile</h1>
 
-        <form className="flex flex-col mt-6 text-white" onSubmit={onSubmit}>
+        <form className="flex flex-col mt-6 text-black" onSubmit={onSubmit}>
           <div className="flex justify-center mt-4">
             <div className="mb-3 w-full">
               <label
@@ -198,7 +198,7 @@ export default function Profile() {
                 id="name"
                 required
                 className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
-                placeholder="Jane Smith"
+                placeholder=" "
                 onChange={onChangeInput}
                 value={profileForm.name}
               />
