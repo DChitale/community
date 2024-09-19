@@ -1,6 +1,7 @@
 import React from "react";
 
 import SideNavigation from '@/components/SideNavigation';
+import Items from '@/components/Items';
 import Spinner from "@/components/Spinner";
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/router";
@@ -58,6 +59,9 @@ export default function MainLayout({ children }) {
               />
             </div>
           </div> */}
+          <div className="w-1/4 p-6">
+        <Items />
+      </div>
         </div>
       </div>
     </div>
