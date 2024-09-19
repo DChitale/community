@@ -24,7 +24,7 @@ const Items = () => {
   ];
 
   return (
-    <div className="bg-white p-6 shadow-lg rounded-lg max-w-sm">
+    <div className="hidden md:block bg-white p-6 shadow-lg rounded-lg max-w-sm">
       <h2 className="text-xl font-semibold mb-4 text-center">Trending Philatelic Items</h2>
       <ul>
         {items.map((item) => (
@@ -32,9 +32,9 @@ const Items = () => {
             <Image
               src={item.image}
               alt={item.name}
-              width={220} // Set the width
-              height={220} // Set the height
-              className="ml-8 object-fit rounded-lg shadow-md "
+              width={220}
+              height={220}
+              className="ml-8 object-fit rounded-lg shadow-md"
             />
             <div className="mt-4">
               <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
