@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"; // Import the Image component
 
 const Items = () => {
   const items = [
@@ -6,19 +7,19 @@ const Items = () => {
       id: 1,
       name: "Inverted Jenny",
       description: "A rare 1918 US postage stamp featuring an upside-down airplane.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxrQRvI0C-yl2bKO5CP__G7_lq68Uy7YsLFQ&s", // replace with actual image
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxrQRvI0C-yl2bKO5CP__G7_lq68Uy7YsLFQ&s",
     },
     {
       id: 2,
       name: "Penny Black",
       description: "The world's first adhesive postage stamp used in the UK.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2OI1B03QT1WnvF0ra2o5oNiYoAkH81Hex-Q&s", // replace with actual image
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2OI1B03QT1WnvF0ra2o5oNiYoAkH81Hex-Q&s",
     },
     {
       id: 3,
       name: "Mauritius Post Office",
       description: "A famous stamp issued by the British colony of Mauritius.",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Mauritius_stamp.jpg/1200px-Mauritius_stamp.jpg", // replace with actual image
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Mauritius_stamp.jpg/1200px-Mauritius_stamp.jpg",
     },
   ];
 
@@ -28,15 +29,18 @@ const Items = () => {
       <ul>
         {items.map((item) => (
           <li key={item.id} className="mb-6">
-            <img
+            <Image
               src={item.image}
               alt={item.name}
-              className="w-54 h-54 object-fit rounded-lg shadow-md"
+              width={220} // Set the width
+              height={220} // Set the height
+              className="object-fit rounded-lg shadow-md"
             />
             <div className="mt-4">
               <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
               <p className="text-sm text-gray-600">{item.description}</p>
-            </div> <hr className="font-bold  h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+            </div>
+            <hr className="font-bold h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
           </li>
         ))}
       </ul>

@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 import { FETCH_STATUS } from '@/utils/constants';
 import { useRouter } from 'next/router';
-
+import Link from 'next/link';
 
 export default function ForgotPassword() {
   const [form, setForm] = React.useState({
@@ -18,8 +18,8 @@ export default function ForgotPassword() {
   const [forgotPasswordStatus, setForgotPasswordStatus] = React.useState(
     FETCH_STATUS.IDLE
   );
-  
-  // const hasErrors = !!form.error;
+  const router = useRouter();
+  const hasErrors = !!form.error;
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -28,12 +28,11 @@ export default function ForgotPassword() {
     const account = new Account(appwriteClient);
     const promise = account.createRecovery(
       email,
-      'https://community-eight.vercel.app/auth/reset-password'
-      
+      'http://localhost:3000/auth/reset-password'
     );
 
     try {
-      // const userAccount = await promise;
+      const userAccount = await promise;
 
       setForgotPasswordStatus(FETCH_STATUS.SUCCESS);
     } catch (error) {

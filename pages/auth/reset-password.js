@@ -31,7 +31,7 @@ export default function ResetPassword() {
     const promise = account.updateRecovery(userId, secret, password, password);
 
     try {
-      // const userAccount = await promise;
+      const userAccount = await promise;
 
       setResetPasswordStatus(FETCH_STATUS.SUCCESS);
     } catch (error) {

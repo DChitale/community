@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 import { Account } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
 
@@ -125,7 +125,8 @@ export default function Signin() {
                   className="block text-sm font-medium text-black "
                 >
                   Don't have an Account?  
-                  <a className='underline text-blue-700 font-bold' href='/auth/signup' > Sign-up</a>
+                  <Link href="/auth/signup" className='underline text-blue-700 font-bold'>Sign-up</Link>
+
                 </label>
                 <Link href="/auth/forgot-password" className="underline cursor-pointer text-blue-700" > Forgot password?</Link>
               </div>

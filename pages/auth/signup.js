@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 import classNames from 'classnames';
 import { Client, Account, ID } from 'appwrite';
 
@@ -37,7 +37,7 @@ export default function SignUp() {
     const promise = account.create(ID.unique(), email, password, name);
 
     try {
-      // const userAccount = await promise;
+      const userAccount = await promise;
       // If this code is reached it means resource was successfully created, redirect the logged user to the sign in page
       setSignupStatus(FETCH_STATUS.SUCCESS);
       router.push('/auth/signin');
@@ -189,7 +189,7 @@ export default function SignUp() {
                   className="flex justify-center block  text-sm font-medium text-black"
                 >
                   Already have an Account?  
-                  <a href='/auth/signin' className='underline cursor-pointer text-blue-600 font-bold'> Login</a>
+                  <Link href='/auth/signin' className='underline cursor-pointer text-blue-600 font-bold'> Login</Link>
                 </label>
             </form>
           </div>

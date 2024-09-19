@@ -12,6 +12,7 @@ export default function SideNavigation() {
   return (
     <div className="w-1/5 text-black py-4 h-auto">
       <div className="px-4">
+      <img src="https://i.ibb.co/GCDyZM6/logo-removebg-preview.png" alt="Logo" className="h-24 w-auto mb-4" />
         {/* <svg
           viewBox="0 0 24 24"
           className="h-9 w-9 text-black"
