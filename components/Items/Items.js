@@ -34,7 +34,7 @@ const Items = () => {
               alt={item.name}
               width={220} // Set the width
               height={220} // Set the height
-              className="object-fit rounded-lg shadow-md"
+              className="ml-8 object-fit rounded-lg shadow-md "
             />
             <div className="mt-4">
               <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>

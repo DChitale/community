@@ -15,7 +15,7 @@ export default function SideNavigation() {
           alt="Logo"
           width={100} // Specify the width
           height={100} // Specify the height
-          className="h-24 w-auto mb-4"
+          className="h-34 w-auto mb-4"
         />
         {/* Other content */}
       </div>
