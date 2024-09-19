@@ -10,12 +10,12 @@ export default function SideNavigation() {
   return (
     <div className="w-1/5 text-black py-4 h-auto">
       <div className="px-4">
-        <Image 
-          src="https://i.ibb.co/GCDyZM6/logo-removebg-preview.png" 
-          alt="Logo" 
+        <Image
+          src="https://i.ibb.co/GCDyZM6/logo-removebg-preview.png"
+          alt="Logo"
           width={100} // Specify the width
           height={100} // Specify the height
-          className="h-24 w-auto mb-4" 
+          className="h-24 w-auto mb-4"
         />
         {/* Other content */}
       </div>
@@ -40,7 +40,96 @@ export default function SideNavigation() {
           </svg>
           Home
         </Link>
-        {/* Other navigation links */}
+        <a
+          href="#"
+          className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-semibold rounded-full hover:bg-red-200 text-black"
+        >
+          <svg
+            className="mr-4 h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+          </svg>
+          Explore
+        </a>
+
+        <a
+          href="#"
+          className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-200 text-black"
+        >
+          <svg
+            className="mr-4 h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+          </svg>
+          Notifications
+        </a>
+
+        <a
+          href="#"
+          className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-200 text-black"
+        >
+          <svg
+            className="mr-4 h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          Messages
+        </a>
+
+        {/* <a
+          href="#"
+          className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-200 text-black"
+        >
+          <svg
+            className="mr-4 h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+          </svg>
+          Bookmarks
+        </a> */}
+
+        {/* <a
+          href="#"
+          className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-200 text-black"
+        >
+          <svg
+            className="mr-4 h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+          </svg>
+          Lists
+        </a> */}
+        
         <Link
           href="/profile"
           className="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-red-200 text-black"
@@ -69,7 +158,9 @@ export default function SideNavigation() {
         >
           <div className="flex items-start flex-col">
             <div className="flex gap-4 items-center">
-              <p className="text-base leading-6 font-medium text-black">Logout</p>
+              <p className="text-base leading-6 font-medium text-black">
+                Logout
+              </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
