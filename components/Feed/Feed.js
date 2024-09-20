@@ -38,29 +38,38 @@ export default function Feed({ posts: postsProp }) {
 
   return (
     <div className="flex">
-      {/* Render SideNavigation for mobile, but always display it on the left for desktop */}
+      {/* SideNavigation for mobile and desktop */}
       <SideNavigation onClose={toggleSidebar} isOpen={isSidebarOpen} />
 
-      <div className="max-w-3xl mx-auto p-4 flex-1">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-          {/* Hamburger Icon for Mobile */}
-          <button className="md:hidden p-2" onClick={toggleSidebar}>
+      <div className="max-w-3xl ml-20 mx-auto p-6 flex-1 bg-gray-50 shadow-md rounded-lg">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+          {/* Mobile Hamburger Icon */}
+          <button className="md:hidden p-2 text-gray-700" onClick={toggleSidebar}>
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </button>
+          <h1 className="text-2xl  text-gray-500">Home</h1>
         </div>
 
-        <CreatePostForm onPostCreated={onPostCreated} />
+        {/* Post Creation Form */}
+        <div className="mb-6 bg-white p-4 shadow rounded-lg">
+          <CreatePostForm onPostCreated={onPostCreated} />
+        </div>
 
-        <div>
+        {/* Posts List */}
+        <div className="space-y-4">
           {postsSortedByCreatedDate?.map((post) => (
-            <Post
-              onLikePostCallback={onLikePostCallback}
-              onPostRemoved={onPostRemoved}
+            <div
               key={post.$id}
-              post={post}
-            />
+              className="bg-white p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow"
+            >
+              <Post
+                onLikePostCallback={onLikePostCallback}
+                onPostRemoved={onPostRemoved}
+                post={post}
+              />
+            </div>
           ))}
         </div>
       </div>

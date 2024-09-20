@@ -5,10 +5,17 @@ import Items from '@/components/Items';
 import Spinner from "@/components/Spinner";
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/router";
+import { useState } from 'react';
 
 export default function MainLayout({ children }) {
   const { currentAccount, isLoadingAccount } = useUser();
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
   React.useEffect(() => {
     if (!currentAccount && !isLoadingAccount) {
@@ -30,7 +37,7 @@ export default function MainLayout({ children }) {
     <div className="bg-white">  
       <div className="min-h-screen container mx-auto">
         <div className="flex justify-center">
-          <SideNavigation />
+          <SideNavigation onClose={toggleSidebar} isOpen={isOpen}/>
 
           {children}
 

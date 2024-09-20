@@ -1,30 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
-
-
-import { Locale, Avatars } from 'appwrite';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useCallback, useEffect } from 'react';
 import { UserIcon } from '@heroicons/react/24/outline';
+import { v4 as uuidv4 } from 'uuid';
 import { Storage } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
-
 import MainLayout from '@/components/Layouts/MainLayout';
 import useUser from '@/hooks/useUser';
 import { FETCH_STATUS } from '@/utils/constants';
-import Select from '@/components/Select';
-import classNames from "classnames";
 
 export default function Profile() {
-  const locale = new Locale(appwriteClient);
-  const avatars = new Avatars(appwriteClient);
-
-  const [profileStatus, setProfileStatus] = React.useState(FETCH_STATUS.IDLE);
   const { currentAccount } = useUser();
-  const [userAvatar, setUserAvatar] = React.useState('');
-  // const [countryFlag, setCountryFlag] = React.useState('');
-  // const [countries, setCountries] = React.useState([]);
-  // const [languages, setLanguages] = React.useState([]);
-  const [profileForm, setProfileForm] = React.useState({
+  const [userAvatar, setUserAvatar] = useState('');
+  const [profileStatus, setProfileStatus] = useState(FETCH_STATUS.IDLE);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // New state for the hamburger menu
+  const [profileForm, setProfileForm] = useState({
     name: '',
     bio: '',
     website: '',
@@ -33,10 +21,9 @@ export default function Profile() {
     error: '',
   });
 
-  const displayUserSettings = React.useCallback(async () => {
+  const displayUserSettings = useCallback(async () => {
     const storage = new Storage(appwriteClient);
     try {
-      // Fetch the users avatar using the avatar's id stored in currentAccount.prefs.avatar
       const usersAvatar = await storage.getFilePreview(
         process.env.NEXT_PUBLIC_BUCKET_ID,
         currentAccount.prefs.avatar
@@ -46,7 +33,6 @@ export default function Profile() {
       console.log(error);
     }
 
-    // When we have the current account, pre fill the form with values
     setProfileForm({
       name: currentAccount?.name,
       bio: currentAccount.prefs?.bio,
@@ -56,18 +42,16 @@ export default function Profile() {
     });
   }, [currentAccount]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (currentAccount) {
       displayUserSettings();
     }
   }, [currentAccount, displayUserSettings]);
 
   const onChangeInput = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    setProfileForm((currProfileForm) => ({
-      ...currProfileForm,
+    const { name, value } = event.target;
+    setProfileForm((prev) => ({
+      ...prev,
       [name]: value,
     }));
   };
@@ -75,7 +59,6 @@ export default function Profile() {
   const onSubmit = async (event) => {
     event.preventDefault();
     setProfileStatus(FETCH_STATUS.LOADING);
-
     try {
       const response = await fetch('/api/user', {
         method: 'POST',
@@ -88,13 +71,12 @@ export default function Profile() {
           'Content-Type': 'application/json',
         },
       });
-      await response.json();
 
+      await response.json();
       if (response.status !== 200) {
         setProfileStatus(FETCH_STATUS.FAIL);
         return;
       }
-
       setProfileStatus(FETCH_STATUS.SUCCESS);
     } catch (error) {
       console.log(error);
@@ -104,7 +86,6 @@ export default function Profile() {
   const onChangeProfileImage = async (event) => {
     const avatar = event?.target?.files[0];
     const avatarId = uuidv4();
-
     const storage = new Storage(appwriteClient);
     await storage.createFile(
       process.env.NEXT_PUBLIC_BUCKET_ID,
@@ -132,130 +113,116 @@ export default function Profile() {
     await response.json();
   };
 
-  // const getCountries = async () => {
-  //   const { countries } = await locale.listCountries();
-  //   setCountries(
-  //     countries.map((country) => ({ value: country, label: country.name }))
-  //   );
-  // };
-
-  // const getLanguages = async () => {
-  //   const { languages } = await locale.listLanguages();
-
-  //   setLanguages(
-  //     languages.map((language) => ({ value: language, label: language.name }))
-  //   );
-  // };
-
-  // React.useEffect(() => {
-  //   getCountries();
-  //   getLanguages();
-  // }, [getCountries, getLanguages]);
-  
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <MainLayout>
-      <div className="text-black px-10 py-10 w-1/2 border border-gray-600 h-auto  border-t-0">
-        <h1 className="text-2xl">Edit Profile</h1>
+      <div className="relative w-full">
+        {/* Hamburger Menu Button */}
+        <button onClick={toggleMenu} className="md:hidden p-2">
+          <svg className="w-8 h-8 text-gray-900">
+            <path d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
 
-        <form className="flex flex-col mt-6 text-black" onSubmit={onSubmit}>
-          <div className="flex justify-center mt-4">
-            <div className="mb-3 w-full">
-              <label
-                htmlFor="formFile"
-                className="ml-px block pl-4 text-sm font-medium cursor-pointer"
-              >
+        {/* Conditionally render the menu based on `isMenuOpen` */}
+        {isMenuOpen && (
+          <div className="absolute top-0 left-0 w-full h-full bg-white z-50">
+            {/* Sidebar or Menu content here */}
+            <p className="p-4">Menu Content</p>
+            <button onClick={toggleMenu} className="absolute top-4 right-4 p-2">
+              Close
+            </button>
+          </div>
+        )}
+
+        {/* Profile Content */}
+        <div className="text-black px-6 py-8 w-full max-w-2xl mx-auto mt-5 bg-white shadow-lg rounded-lg border-gray-300 md:px-8 md:mr-10 py-20">
+          <h1 className="text-2xl md:text-3xl flex justify-center font-semibold mb-6">Edit Profile</h1>
+          <form className="space-y-6" onSubmit={onSubmit}>
+            <div className="flex flex-col items-center">
+              <label htmlFor="formFile" className="cursor-pointer flex flex-col items-center space-y-2">
                 <div
-                  style={{ background: `url('${userAvatar}')` }}
-                  className=" !bg-cover w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center"
+                  style={{ backgroundImage: `url('${userAvatar}')` }}
+                  className="bg-cover w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-300 flex items-center justify-center shadow-md"
                 >
-                  {!userAvatar && (
-                    <UserIcon className="text-gray-400 w-10 h-10" />
-                  )}
+                  {!userAvatar && <UserIcon className="text-gray-500 w-10 h-10 md:w-12 md:h-12" />}
                 </div>
+                <span className="text-sm text-gray-600">Change Avatar</span>
               </label>
               <input
-                className="hidden relative m-0 w-full min-w-0 flex-auto cursor-pointer rounded-lg border border-solid border-gray-700 bg-transparent "
                 type="file"
                 id="formFile"
+                className="hidden"
                 accept=".jpeg,.jpg,.png"
-                name="avatar"
                 onChange={onChangeProfileImage}
               />
             </div>
-          </div>
-          <div className="mt-3">
-            <label
-              htmlFor="name"
-              className="ml-px block pl-4 text-sm font-medium "
-            >
+
+            {/* Other form inputs here */}
+            <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
               Name
             </label>
-            <div className="mt-1">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                required
-                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
-                placeholder=" "
-                onChange={onChangeInput}
-                value={profileForm.name}
-              />
-            </div>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-black focus:border-black sm:text-sm"
+              value={profileForm.name}
+              onChange={onChangeInput}
+            />
           </div>
-          <div className="mt-4">
-            <label
-              htmlFor="name"
-              className="ml-px block pl-4 text-sm font-medium "
-            >
+
+          <div>
+            <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
               Bio
             </label>
-            <div className="mt-1">
-              <textarea
-                rows="8"
-                type="text"
-                name="bio"
-                id="bio"
-                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
-                placeholder="Tell us something about yourself!"
-                onChange={onChangeInput}
-                value={profileForm.bio}
-              />
-            </div>
+            <textarea
+              rows="4"
+              name="bio"
+              id="bio"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-black focus:border-black sm:text-sm"
+              value={profileForm.bio}
+              onChange={onChangeInput}
+              placeholder="Tell us something about yourself!"
+            />
           </div>
-          <div className="mt-4">
-            <label
-              htmlFor="name"
-              className="ml-px block pl-4 text-sm font-medium "
-            >
+
+          <div>
+            <label htmlFor="website" className="block text-sm font-medium text-gray-700">
               Website
             </label>
-            <div className="mt-1">
-              <input
-                rows="8"
-                type="text"
-                name="website"
-                id="website"
-                className="block w-full rounded-md border border-black bg-white px-4 py-3 text-black shadow-sm focus:border-black focus:ring focus:ring-black outline-none transition duration-200 ease-in-out"
-                placeholder="e.g. https://www.johndoe.dev"
-                onChange={onChangeInput}
-                value={profileForm.website}
-              />
-            </div>
-           
+            <input
+              type="url"
+              name="website"
+              id="website"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-black focus:border-black sm:text-sm"
+              value={profileForm.website}
+              onChange={onChangeInput}
+              placeholder="e.g. https://www.johndoe.dev"
+            />
           </div>
 
           {profileStatus === FETCH_STATUS.SUCCESS && (
-            <div className="border-solid py-3 px-5 rounded-md border mt-4  border-green-500 bg-green-100 text-green-500">
+            <div className="border border-green-500 bg-green-100 text-green-700 py-2 px-4 rounded-md">
               <p>Your settings have been saved successfully!</p>
             </div>
           )}
 
-          <button className="py-2 px-4 rounded-full border-2 text-lg w-40 border-black text-black mt-10">
-            Save
-          </button>
-        </form>
+
+
+            <button
+              type="submit"
+              className="w-full py-2 px-4 rounded-full bg-gradient-to-r from-red-400 to-rose-700 text-white hover:bg-gray-800 transition ease-in-out duration-200"
+            >
+              Save
+            </button>
+          </form>
+        </div>
       </div>
     </MainLayout>
   );
