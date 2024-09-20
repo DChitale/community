@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Databases } from 'appwrite';
 import appwriteClient from '@/libs/appwrite';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Feed from '@/components/Feed';
 import MainLayout from '@/components/Layouts/MainLayout';
 
