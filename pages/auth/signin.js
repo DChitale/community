@@ -5,6 +5,8 @@ import appwriteClient from '@/libs/appwrite';
 import classNames from 'classnames';
 import { FETCH_STATUS } from '@/utils/constants';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+
 
 export default function Signin() {
   const [form, setForm] = React.useState({
@@ -42,9 +44,18 @@ export default function Signin() {
   };
 
   return (
-    <div className="flex text-white flex-col justify-center py-12 sm:px-6 lg:px-8 bg-cover bg-[url('https://static.vecteezy.com/system/resources/previews/002/303/802/non_2x/abstract-white-background-poster-with-dynamic-technology-network-illustration-vector.jpg')] min-h-screen">
+    <div className="flex text-black flex-col justify-center py-6 sm:px-6 lg:px-8 bg-cover bg-[url('https://static.vecteezy.com/system/resources/previews/002/303/802/non_2x/abstract-white-background-poster-with-dynamic-technology-network-illustration-vector.jpg')] min-h-screen">
+      <div className="px-4">
+            <Image
+              src="https://i.ibb.co/GCDyZM6/logo-removebg-preview.png"
+              alt="Logo"
+              width={100}
+              height={100}
+              className="h-34 w-auto mb-4"
+            />
+          </div>
       <div className="sm:mx-auto justify-center sm:w-full flex flex-col sm:max-w-md">
-        <h3 className="mt-0 text-center text-4xl font-bold tracking-tight bg-opacity-25 backdrop-blur-md p-3 text-black">
+        <h3 className="mt-0 text-center text-4xl sm:text-2xl font-bold tracking-tight bg-opacity-25 backdrop-blur-md p-3 text-black">
           Stay connected with fellow stamp collectors  
         </h3>
       </div>
